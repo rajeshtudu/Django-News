@@ -68,6 +68,8 @@ class Comment(TimeStamp):
     name = models.CharField(max_length=200)
     email = models.EmailField()
 
+    def __str__(self):
+        return self.name[:100]
 
 #################### 1 - 1 relationship => OneToOneField
 # 1 user can have only 1 profile => 1
