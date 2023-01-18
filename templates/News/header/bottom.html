@@ -34,11 +34,26 @@
                         <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                         <li> <a href="#"><i class="fab fa-youtube"></i></a></li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'post-create' %}"><i class="fas fa-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'draft-list' %}"><i class="fas fa-book"></i></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
+                        </li>
+                        {% endif %}
                     </ul>
-                    <!-- Search Nav -->
+                    {% comment %} <!-- Search Nav -->
                     <div class="nav-search search-switch">
                         <i class="fa fa-search"></i>
-                    </div>
+                    </div> {% endcomment %}
                 </div>
             </div>
             <!-- Mobile Menu -->

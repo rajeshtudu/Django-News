@@ -12,21 +12,6 @@
                 </div>
                 <div class="header-info-right">
                     <ul class="header-date">
-                        {% if user.is_authenticated %}
-                        <li>
-                            <a href="{% url 'post-create' %}"><i class="fas fa-plus"></i></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'draft-list' %}"><i class="fas fa-book"></i></a>
-                        </li>
-                        <li>
-                            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
-                        </li>
-                        {% else %}
-                        <li>
-                            <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
-                        </li>
-                        {% endif %}
                         <li>
                             <span class="flaticon-calendar"></span> +880166 253 232
                         </li>
