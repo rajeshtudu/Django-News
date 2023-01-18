@@ -1,0 +1,38 @@
+<div class="header-top black-bg d-none d-sm-block">
+    <div class="container">
+        <div class="col-xl-12">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="header-info-left">
+                    <ul>
+                        <li class="title">
+                            <span class="flaticon-energy"></span> trending-title
+                        </li>
+                        <li>Class property employ ancho red multi level mansion</li>
+                    </ul>
+                </div>
+                <div class="header-info-right">
+                    <ul class="header-date">
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'post-create' %}"><i class="fas fa-plus"></i></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'draft-list' %}"><i class="fas fa-book"></i></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a href="{% url 'login' %}"><i class="fas fa-user"></i></a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <span class="flaticon-calendar"></span> +880166 253 232
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

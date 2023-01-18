@@ -1,0 +1,18 @@
+<aside class="single_sidebar_widget newsletter_widget">
+  <h4 class="widget_title">Newsletter</h4>
+  <div class="newsletter_success"></div>
+  <form action="" class="newsletter_form">
+    <div class="form-group">
+      {% csrf_token %}
+      <input type="email"
+             class="form-control"
+             onfocus="this.placeholder = ''"
+             onblur="this.placeholder = 'Enter email'"
+             placeholder='Enter email'
+             name="email"
+             required>
+    </div>
+    <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+            type="submit">Subscribe</button>
+  </form>
+</aside>

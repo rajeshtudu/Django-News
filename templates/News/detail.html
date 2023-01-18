@@ -1,0 +1,147 @@
+{% extends "News/base.html" %}
+{% load static %}
+{% block content %}
+  <!--================Blog Area =================-->
+  <section class="blog_area single-post-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 posts-list">
+          <div class="single-post">
+            <div class="feature-img">
+              <img class="img-fluid"
+                   src="{{ post.featured_image.url }}"
+                   alt="{{ post.title }}">
+            </div>
+            <div class="blog_details">
+              <h2>{{ post.title }}</h2>
+              <ul class="blog-info-link mt-3 mb-4">
+                <li>
+                  <a href="#"><i class="fa fa-user"></i>@{{ post.author.username }}</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-tag"></i>{{ post.tag.all|join:", " }}</a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-comments"></i> {{ post.comment_set.count }} Comments</a>
+                </li>
+              </ul>
+              {{ post.content|linebreaksbr }}
+            </div>
+          </div>
+          <div class="navigation-top">
+            <div class="d-sm-flex justify-content-between text-center">
+              <p class="like-info">
+                <span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
+                people like this
+              </p>
+              <div class="col-sm-4 text-center my-2 my-sm-0">
+                <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+              </div>
+              <ul class="social-icons">
+                <li>
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-dribbble"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fab fa-behance"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="navigation-area">
+              <div class="row">
+                {% if previous_post %}
+                  <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                    <div class="thumb">
+                      <a href="{% url 'post-detail' previous_post.pk %}">
+                        <img class="img-fluid" width="125"
+                             src="{{ previous_post.featured_image.url }}"
+                             alt="{{ previous_post.title }}">
+                      </a>
+                    </div>
+                    <div class="arrow">
+                      <a href="#">
+                        <span class="lnr text-white ti-arrow-left"></span>
+                      </a>
+                    </div>
+                    <div class="detials">
+                      <p>Prev Post</p>
+                      <a href="{% url 'post-detail' previous_post.pk %}">
+                        <h4>{{ previous_post.title|truncatechars:25 }}</h4>
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+                {% if next_post %}
+                  <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                    <div class="detials">
+                      <p>Next Post</p>
+                      <a href="{% url 'post-detail' next_post.pk %}">
+                        <h4>{{ next_post.title|truncatechars:25 }}</h4>
+                      </a>
+                    </div>
+                    <div class="arrow">
+                      <a href="#">
+                        <span class="lnr text-white ti-arrow-right"></span>
+                      </a>
+                    </div>
+                    <div class="thumb">
+                      <a href="{% url 'post-detail' next_post.pk %}">
+                        <img class="img-fluid" width="125"
+                             src="{{ next_post.featured_image.url }}"
+                             alt="{{ next_post.title }}">
+                      </a>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+ 
+          <div class="blog-author">
+            <div class="media align-items-center">
+              <img src="{% static "img/profile.png" %}" alt="{{ post.author.username }}">
+              <div class="media-body">
+                <a href="#">
+                  <h4>{{ post.author.username }}</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="comments-area">
+            <h4>{{ post.comment_set.count }} Comments</h4>
+            {% for comment in comments %}
+              <div class="comment-list">
+                <div class="single-comment justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                      <img src="{% static "img/profile.png" %}" alt="{{ comment.subject }}">
+                    </div>
+                    <div class="desc">
+                      <p class="comment">{{ comment.message }}</p>
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                          <h5>
+                            <a href="#">{{ comment.name }}</a>
+                          </h5>
+                          <p class="date">{{ comment.created_at }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>  
+          {% include "News/comment.html" %}
+        </div>
+        {% include "News/body/post_list/right.html" %}
+      </div>
+    </div>
+  </section>
+  <!--================ Blog Area end =================-->
+{% endblock content %}

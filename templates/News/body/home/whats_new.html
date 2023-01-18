@@ -1,0 +1,343 @@
+{% load static %}
+
+<section class="whats-news-area pt-50 pb-20 gray-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            <div class="whats-news-wrapper">
+                <!-- Heading & Nav Button -->
+                <div class="row justify-content-between align-items-end mb-15">
+                    <div class="col-xl-4">
+                        <div class="section-tittle mb-30">
+                            <h3>Whats New</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-md-9">
+                        <div class="properties__button">
+                            <!--Nav Button  -->                                            
+                            <nav>                                                 
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-politics-tab" data-toggle="tab" href="#nav-politics" role="tab" aria-controls="nav-politics" aria-selected="true">Politics</a>
+                                    <a class="nav-item nav-link" id="nav-travel-tab" data-toggle="tab" href="#nav-travel" role="tab" aria-controls="nav-travel" aria-selected="false">Travel</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Fashion</a>
+                                    <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Sports</a>
+                                    <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Technology</a>
+                                </div>
+                            </nav>
+                            <!--End Nav Button  -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab content -->
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav Card -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- card one -->
+                            <div class="tab-pane fade show active" id="nav-politics" role="tabpanel" aria-labelledby="nav-politics-tab">       
+                                <div class="row">
+                                    <!-- Left Details Caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        {% for post in posts|slice:':1' %}
+                                        {% if post.category.name == "politics" %}
+                                        <div class="whats-news-single mb-40 mb-40">
+                                            <div class="whates-img">
+                                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                            </div>
+                                            <div class="whates-caption">
+                                                <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h4>
+                                                <span>by {{ post.author.username }}   -   {{ post.published_at }}</span>
+                                                <p>{{ post.content|truncatechars:50 }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Right single caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        <div class="row">
+                                            <!-- single -->
+                                            {% for post in posts %}
+                                            {% if post.category.name == "politics" %}
+                                                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
+                                                    <div class="whats-right-single mb-20">
+                                                        <div class="whats-right-img">
+                                                            <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                                        </div>
+                                                        <div class="whats-right-cap">
+                                                            <span class="colorb">{{ post.category.name }}</span>
+                                                            <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h4>
+                                                            <p>Jun 19, 2020</p> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card two -->
+                            <div class="tab-pane fade" id="nav-travel" role="tabpanel" aria-labelledby="nav-travel-tab">
+                                <div class="row">
+                                    <!-- Left Details Caption -->
+                                    <div class="col-xl-6">
+                                        {% for post in posts|slice:':11' %}
+                                        {% if post.category.name == "travel" %}
+                                        <div class="whats-news-single mb-40">
+                                            <div class="whates-img">
+                                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }} class="img-fluid" ">
+                                            </div>
+                                            <div class="whates-caption">
+                                                <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h4>
+                                                <span>by {{ post.author.username }}   -   {{ post.published_at }}</span>
+                                                <p>{{ post.content|truncatechars:250 }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Right single caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        <div class="row">
+                                            <!-- single -->
+                                            {% for post in posts %}
+                                            {% if post.category.name == "travel" %}
+                                            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
+                                                <div class="whats-right-single mb-20">
+                                                    <div class="whats-right-img">
+                                                        <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                                    </div>
+                                                    <div class="whats-right-cap">
+                                                        <span class="colorb">{{ post.category.name }}</span>
+                                                        <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title|truncatechars:25 }}</a></h4>
+                                                        <p>{{ post.published_at }}</p> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card three -->
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                <div class="row">
+                                    <!-- Left Details Caption -->
+                                    <div class="col-xl-6">
+                                        {% for post in posts|slice:':9' %}
+                                        {% if post.category.name == "fashion" %}
+                                        <div class="whats-news-single mb-40">
+                                            <div class="whates-img">
+                                                <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                            </div>
+                                            <div class="whates-caption">
+                                                <h4><a href="#">{{ post.title|truncatechars:25 }}</a></h4>
+                                                <span>by {{ post.author.username }}   -   {{ post.published_at }}</span>
+                                                <p>{{ post.content|truncatechars:200 }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Right single caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        <div class="row">
+                                            <!-- single -->
+                                            {% for post in posts %}
+                                            {% if post.category.name == "fashion" %}
+                                            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
+                                                <div class="whats-right-single mb-20">
+                                                    <div class="whats-right-img">
+                                                        <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                                    </div>
+                                                    <div class="whats-right-cap">
+                                                        <span class="colorb">{{ post.category.name }}</span>
+                                                        <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title|truncatechars:25 }}</a></h4>
+                                                        <p>{{ post.published_at }}</p> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card fure -->
+                            <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
+                                <div class="row">
+                                    <!-- Left Details Caption -->
+                                    <div class="col-xl-6">
+                                        {% for post in posts|slice:':4' %}
+                                        {% if post.category.name == "sports" %}
+                                        <div class="whats-news-single mb-40">
+                                            <div class="whates-img">
+                                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }} class="img-fluid" ">
+                                            </div>
+                                            <div class="whates-caption">
+                                                <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h4>
+                                                <span>by {{ post.author.username }}   -   {{ post.published_at }}</span>
+                                                <p>{{ post.content|truncatechars:250 }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Right single caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        <div class="row">
+                                            <!-- single -->
+                                            {% for post in posts %}
+                                            {% if post.category.name == "sports" %}
+                                            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
+                                                <div class="whats-right-single mb-20">
+                                                    <div class="whats-right-img">
+                                                        <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                                    </div>
+                                                    <div class="whats-right-cap">
+                                                        <span class="colorb">{{ post.category.name }}</span>
+                                                        <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title|truncatechars:25 }}</a></h4>
+                                                        <p>{{ post.published_at }}</p> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- card Five -->
+                            <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-Sports">
+                                <div class="row">
+                                    <!-- Left Details Caption -->
+                                    <div class="col-xl-6">
+                                        {% for post in posts|slice:':6' %}
+                                        {% if post.category.name == "technology" %}
+                                        <div class="whats-news-single mb-40">
+                                            <div class="whates-img">
+                                                <img src="{{ post.featured_image.url }}" alt="{{ post.title }} class="img-fluid" ">
+                                            </div>
+                                            <div class="whates-caption">
+                                                <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h4>
+                                                <span>by {{ post.author.username }}   -   {{ post.published_at }}</span>
+                                                <p>{{ post.content|truncatechars:250 }}</p>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Right single caption -->
+                                    <div class="col-xl-6 col-lg-12">
+                                        <div class="row">
+                                            <!-- single -->
+                                            {% for post in posts %}
+                                            {% if post.category.name == "technology" %}
+                                            <div class="col-xl-12 col-lg-6 col-md-6 col-sm-10">
+                                                <div class="whats-right-single mb-20">
+                                                    <div class="whats-right-img">
+                                                        <img class="img-fluid" width="124" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                                                    </div>
+                                                    <div class="whats-right-cap">
+                                                        <span class="colorb">{{ post.category.name }}</span>
+                                                        <h4><a href="{% url 'post-detail' post.pk %}">{{ post.title|truncatechars:25 }}</a></h4>
+                                                        <p>{{ post.published_at }}</p> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- End Nav Card -->
+                    </div>
+                </div>
+            </div>
+            <!-- Banner -->
+            <div class="banner-one mt-20 mb-30">
+                <img src="{% static 'assets/img/gallery/body_card1.png' %}" alt="">
+            </div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Flow Socail -->
+                <div class="single-follow mb-45">
+                    <div class="single-box">
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="{% static 'assets/img/news/icon-fb.png' %}" alt=""></a>
+                            </div>
+                            <div class="follow-count">  
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div> 
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                            <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="{% static 'assets/img/news/icon-ins.png' %}" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                        <div class="follow-us d-flex align-items-center">
+                            <div class="follow-social">
+                                <a href="#"><img src="{% static 'assets/img/news/icon-yo.png' %}" alt=""></a>
+                            </div>
+                            <div class="follow-count">
+                                <span>8,045</span>
+                                <p>Fans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Most Recent Area -->
+                <div class="most-recent-area">
+                    <!-- Section Tittle -->
+                    <div class="small-tittle mb-20">
+                        <h4>Most Recent</h4>
+                    </div>
+                    <!-- Details -->
+                    {% for recent_post in recent_posts|slice:':1' %}
+                    <div class="most-recent mb-40">
+                        <div class="most-recent-img">
+                            <img src="{{ recent_post.featured_image.url }}" alt="{{ recent_post.title }}">
+                            <div class="most-recent-cap">
+                                <span class="bgbeg">{{ recent_post.category.name }}</span>
+                                <h4><a href="{% url 'post-detail' recent_post.pk %}">{{ recent_post.title|truncatechars:25 }}</a></h4>
+                                <p>{{ recent_post.author.username }}  |  {{ recent_post.published_at }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Single -->
+                    {% for recent_post in recent_posts|slice:':2' %}
+                    <div class="most-recent-single">
+                        <div class="most-recent-images">
+                            <img width="85" class="img-fluid" src="{{ recent_post.featured_image.url }}" alt="{{ recent_post.title }}">
+                        </div>
+                        <div class="most-recent-capt">
+                            <h4><a href="{% url 'post-detail' recent_post.pk %}">{{ recent_post.title|truncatechars:25 }}</a></h4>
+                            <p>{{ recent_post.author.username }} |  {{ recent_post.published_at }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+    

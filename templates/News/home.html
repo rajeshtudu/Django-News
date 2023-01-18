@@ -1,0 +1,12 @@
+{% extends "News/base.html" %}
+{% load static %}
+{% block content %}
+    <main>
+        {% include "News/body/home/trending.html" %}
+        {% include "News/body/home/whats_new.html" %}
+        {% include "News/body/home/weekly2.html" %}
+        {% include "News/body/home/recent.html" %}
+        {% include "News/body/home/weekly3.html" %}
+        {% include "News/body/home/banner.html" %}
+    </main>
+{% endblock content %}

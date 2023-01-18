@@ -1,0 +1,16 @@
+{% extends "News/base.html" %}
+
+
+{% block content %}
+  <!--================Blog Area =================-->
+  <section class="blog_area section-padding">
+    <div class="container">
+      <div class="row">
+        {% include "News/body/post_list/left.html" %}
+        {% include "News/body/post_list/right.html" %}
+      </div>
+    </div>
+  </section>
+  <!--================Blog Area =================-->
+ 
+{% endblock content %}
