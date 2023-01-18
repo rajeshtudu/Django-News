@@ -8,7 +8,7 @@ h1 a {
 .page-header {
   background-color: #27a0dc;
   margin-top: 0;
-  padding: 20px 20px 20px 40px;
+  padding: 5px 10px 5px 10px;
 }
 
 .page-header h1,
@@ -16,7 +16,7 @@ h1 a {
 .page-header h1 a:visited,
 .page-header h1 a:active {
   color: #ffffff;
-  font-size: 36pt;
+  font-size: 24px;
   text-decoration: none;
 }
 
@@ -63,7 +63,7 @@ h4 {
 }
 
 .lg-icons {
-  font-size: 50px !important;
+  font-size: 24px !important;
 }
 
 .title {
