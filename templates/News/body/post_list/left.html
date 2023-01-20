@@ -20,7 +20,7 @@
           <p>{{ post.content|truncatechars:100 }}</p>
           <ul class="blog-info-link">
             <li>
-              <a href="#"><i class="fa fa-user"></i>{{ post.tag.all|join:", "|title }}</a>
+              <a href="#"><i class="fa fa-tag"></i>{{ post.tag.all|join:", "|title }}</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-comments"></i>{{ post.comment_set.all | length }} Comments</a>
