@@ -132,7 +132,6 @@ class PostByTag(ListView):
 
 class PostSearchView(View):
     template_name = "News/body/post_list/post_list.html"
-
     def get(self, request, *args, **kwargs):
         query = request.GET["query"]
         posts = Post.objects.filter(
