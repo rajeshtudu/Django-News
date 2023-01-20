@@ -26,6 +26,11 @@ def navigation(request):
     random_posts = Post.objects.filter(
         published_at__isnull=False, status="active"
     ).order_by("?")[:5]
+    if request.method == "GET" and "query" in request.GET:
+        recent_posts = recent_posts[:3]
+        top_posts = top_posts[:3]
+        weekly_posts = weekly_posts[:3]
+        random_posts = random_posts[:3]
     return {
         "categories": categories,
         "tags": tags,
